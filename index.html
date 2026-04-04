@@ -747,21 +747,24 @@
     });
 
     // Click on trail line on map → select it
-    map.on('layeradd', () => {
+    function attachClickHandlers() {
       layers.forEach((trail, idx) => {
         if (!trail) return;
         trail.layer.eachLayer(sub => {
           if (sub.on && sub.setStyle) {
-            sub.off('click');
             sub.on('click', () => {
               activeIndex = idx;
               selectTrail(trail, idx);
               renderList(layers.filter(Boolean));
 
+              // Scroll sidebar to the active item
+              const activeEl = document.querySelector('.trail-item.active');
+              if (activeEl) activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
               // Popup
               const distKm = (trail.distance / 1000).toFixed(1);
               const popup = L.popup()
-                .setLatLng(sub.getLatLngs ? sub.getCenter() : sub.getLatLng())
+                .setLatLng(sub.getCenter())
                 .setContent(`
                   <div class="popup-title">${trail.name}</div>
                   <dl class="popup-stats">
@@ -775,7 +778,7 @@
           }
         });
       });
-    });
+    }
 
   })();
   </script>
