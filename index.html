@@ -555,12 +555,10 @@
     });
 
     function finishLoading() {
-      // Remove nulls from failed loads
       const validLayers = layers.filter(Boolean);
       trailCountEl.textContent = validLayers.length;
       renderList(validLayers);
 
-      // Fit map to all trails
       if (validLayers.length > 0) {
         const allBounds = L.latLngBounds([]);
         validLayers.forEach(l => {
@@ -569,6 +567,7 @@
         if (allBounds.isValid()) map.fitBounds(allBounds, { padding: [40, 40] });
       }
 
+      attachClickHandlers();
       loader.classList.add('hidden');
     }
 
