@@ -267,10 +267,26 @@
   </div>
 
   <script>
+  // =================================================================
+  //  CONFIGURATION — Add your GPX files here!
+  // =================================================================
+  //
+  //  To add a new hike, simply:
+  //  1. Drop your .gpx file into the "gpx/" folder
+  //  2. Add an entry below with:
+  //       - file:  path to your GPX file
+  //       - name:  display name (optional — will use GPX metadata if blank)
+  //       - color: trail color on the map (optional — auto-assigned if blank)
+  //       - date:  date of the hike (optional)
+  //       - group: who you went with (optional)
+  //
+  //  Example:
+  //    { file: "gpx/my-hike.gpx", name: "Monte Grappa", color: "#22cc88", date: "15 Mar 2024", group: "Con Marco e Luca" }
+  //
   var TRAILS = [
-    { file: "gpx/example-trail.gpx", name: "", color: "" },
-    { file: "gpx/Alta_Via_Dolomiti_Bellunesi_1.gpx", name: "Alta Via Dolomiti Bellunesi - Parte 1", color: "#eee600" },
-    { file: "gpx/Alta_Via_Dolomiti_Bellunesi_2.gpx", name: "Alta Via Dolomiti Bellunesi - Parte 2", color: "#eee600" },
+    { file: "gpx/example-trail.gpx", name: "", color: "", date: "", group: "" },
+    { file: "gpx/Alta_Via_Dolomiti_Bellunesi_1.gpx", name: "Alta Via Dolomiti Bellunesi - Parte 1", color: "#eee600", date: "", group: "" },
+    { file: "gpx/Alta_Via_Dolomiti_Bellunesi_2.gpx", name: "Alta Via Dolomiti Bellunesi - Parte 2", color: "#eee600", date: "", group: "" },
   ];
 
   var PALETTE = [
@@ -317,7 +333,6 @@
       return;
     }
 
-    // Helper: strip all markers from a GPX layer group
     function removeMarkers(gpxLayerGroup) {
       var toRemove = [];
       gpxLayerGroup.eachLayer(function(layer) {
@@ -342,9 +357,7 @@
       gpxLayer.on('loaded', function(e) {
         var gpx = e.target;
 
-        // Remove markers immediately
         removeMarkers(gpx);
-        // And again after a short delay (some plugin versions re-add them)
         setTimeout(function() { removeMarkers(gpx); }, 100);
         setTimeout(function() { removeMarkers(gpx); }, 500);
 
@@ -375,7 +388,8 @@
         layers[i] = {
           layer: gpx, name: trailName, color: color,
           distance: dist, elevGain: elevG, elevLoss: elevL,
-          elevData: elevData, bounds: bounds
+          elevData: elevData, bounds: bounds,
+          date: t.date || '', group: t.group || ''
         };
         loaded++;
         if (loaded === TRAILS.length) finishLoading();
@@ -470,6 +484,10 @@
               '<span>📏 ' + distKm + ' km</span>' +
               '<span>⬆ ' + elevUp + ' m</span>' +
             '</div>' +
+            (trail.date || trail.group ? '<div class="trail-meta" style="margin-top:4px">' +
+              (trail.date ? '<span>📅 ' + trail.date + '</span>' : '') +
+              (trail.group ? '<span>👥 ' + trail.group + '</span>' : '') +
+            '</div>' : '') +
           '</div>';
 
         el.addEventListener('click', function() {
