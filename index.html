@@ -417,13 +417,13 @@
       trailCountEl.textContent = validLayers.length;
       renderList(validLayers);
 
-      if (validLayers.length > 0) {
-        var allBounds = L.latLngBounds([]);
-        validLayers.forEach(function(l) {
-          if (l.bounds && l.bounds.isValid()) allBounds.extend(l.bounds);
-        });
-        if (allBounds.isValid()) map.fitBounds(allBounds, { padding: [40, 40] });
-      }
+      // if (validLayers.length > 0) {
+      //   var allBounds = L.latLngBounds([]);
+      //   validLayers.forEach(function(l) {
+      //     if (l.bounds && l.bounds.isValid()) allBounds.extend(l.bounds);
+      //   });
+      //   if (allBounds.isValid()) map.fitBounds(allBounds, { padding: [40, 40] });
+      // }
 
       attachClickHandlers();
 
