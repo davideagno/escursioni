@@ -40,20 +40,13 @@
       overflow: hidden;
     }
 
-    /* ---- LAYOUT ---- */
-    .app {
-      display: flex;
-      height: 100vh;
-    }
+    .app { display: flex; height: 100vh; }
 
-    /* ---- SIDEBAR ---- */
     .sidebar {
-      width: 380px;
-      min-width: 380px;
+      width: 380px; min-width: 380px;
       background: var(--surface);
       border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
       z-index: 1000;
       transition: transform 0.35s cubic-bezier(.4,0,.2,1);
     }
@@ -65,31 +58,23 @@
 
     .sidebar-header h1 {
       font-family: 'Playfair Display', serif;
-      font-weight: 800;
-      font-size: 1.75rem;
-      letter-spacing: -0.02em;
-      color: var(--text);
+      font-weight: 800; font-size: 1.75rem;
+      letter-spacing: -0.02em; color: var(--text);
       margin-bottom: 4px;
     }
 
     .sidebar-header .subtitle {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      letter-spacing: 0.06em;
+      font-size: 0.8rem; color: var(--text-muted);
+      font-weight: 300; letter-spacing: 0.06em;
       text-transform: uppercase;
     }
 
     .trail-count {
       display: inline-block;
-      background: var(--accent-dim);
-      color: var(--accent);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 20px;
-      margin-left: 8px;
-      vertical-align: middle;
+      background: var(--accent-dim); color: var(--accent);
+      font-size: 0.7rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 20px;
+      margin-left: 8px; vertical-align: middle;
     }
 
     .sidebar-search {
@@ -98,287 +83,162 @@
     }
 
     .sidebar-search input {
-      width: 100%;
-      padding: 10px 14px;
+      width: 100%; padding: 10px 14px;
       background: var(--bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.85rem;
-      outline: none;
+      color: var(--text); font-family: inherit;
+      font-size: 0.85rem; outline: none;
       transition: border-color 0.2s;
     }
 
     .sidebar-search input::placeholder { color: var(--text-muted); }
     .sidebar-search input:focus { border-color: var(--accent); }
 
-    .trail-list {
-      flex: 1;
-      overflow-y: auto;
-      padding: 8px 12px;
-    }
-
+    .trail-list { flex: 1; overflow-y: auto; padding: 8px 12px; }
     .trail-list::-webkit-scrollbar { width: 4px; }
     .trail-list::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
     .trail-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 14px 12px;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: background 0.2s;
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 14px 12px; border-radius: var(--radius);
+      cursor: pointer; transition: background 0.2s;
       border-left: 3px solid transparent;
     }
 
-    .trail-item:hover, .trail-item.active {
-      background: var(--surface-hover);
-    }
-
-    .trail-item.active {
-      border-left: 3px solid var(--accent);
-    }
+    .trail-item:hover, .trail-item.active { background: var(--surface-hover); }
+    .trail-item.active { border-left: 3px solid var(--accent); }
 
     .trail-color-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      margin-top: 5px;
-      flex-shrink: 0;
+      width: 12px; height: 12px; border-radius: 50%;
+      margin-top: 5px; flex-shrink: 0;
     }
 
-    .trail-info h3 {
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 4px;
-      line-height: 1.3;
-    }
+    .trail-info h3 { font-size: 0.9rem; font-weight: 500; margin-bottom: 4px; line-height: 1.3; }
 
     .trail-meta {
-      display: flex;
-      gap: 14px;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-weight: 300;
+      display: flex; gap: 14px; font-size: 0.72rem;
+      color: var(--text-muted); font-weight: 300;
     }
 
-    .trail-meta span {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
+    .trail-meta span { display: flex; align-items: center; gap: 4px; }
 
     .sidebar-footer {
-      padding: 16px 24px;
-      border-top: 1px solid var(--border);
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-align: center;
-      font-weight: 300;
+      padding: 16px 24px; border-top: 1px solid var(--border);
+      font-size: 0.7rem; color: var(--text-muted);
+      text-align: center; font-weight: 300;
     }
 
-    .sidebar-footer a {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    .sidebar-footer a { color: var(--accent); text-decoration: none; }
 
-    /* ---- MAP ---- */
-    .map-container {
-      flex: 1;
-      position: relative;
-    }
+    .map-container { flex: 1; position: relative; }
+    #map { width: 100%; height: 100%; }
 
-    #map {
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Style Leaflet popups */
     .leaflet-popup-content-wrapper {
-      background: var(--surface) !important;
-      color: var(--text) !important;
+      background: var(--surface) !important; color: var(--text) !important;
       border-radius: var(--radius) !important;
       border: 1px solid var(--border) !important;
       box-shadow: 0 12px 40px rgba(0,0,0,0.5) !important;
       font-family: 'DM Sans', sans-serif !important;
     }
 
-    .leaflet-popup-tip {
-      background: var(--surface) !important;
-      border: 1px solid var(--border) !important;
-    }
-
-    .leaflet-popup-content {
-      margin: 14px 16px !important;
-      font-size: 0.85rem !important;
-    }
+    .leaflet-popup-tip { background: var(--surface) !important; border: 1px solid var(--border) !important; }
+    .leaflet-popup-content { margin: 14px 16px !important; font-size: 0.85rem !important; }
 
     .popup-title {
       font-family: 'Playfair Display', serif;
-      font-weight: 600;
-      font-size: 1rem;
-      margin-bottom: 8px;
+      font-weight: 600; font-size: 1rem; margin-bottom: 8px;
     }
 
     .popup-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px 16px;
-      font-size: 0.78rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 6px 16px; font-size: 0.78rem;
     }
 
-    .popup-stats dt {
-      color: var(--text-muted);
-      font-weight: 300;
-    }
+    .popup-stats dt { color: var(--text-muted); font-weight: 300; }
+    .popup-stats dd { font-weight: 500; color: var(--accent); }
 
-    .popup-stats dd {
-      font-weight: 500;
-      color: var(--accent);
-    }
-
-    /* ---- MOBILE TOGGLE ---- */
     .sidebar-toggle {
-      display: none;
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      z-index: 1100;
-      width: 44px;
-      height: 44px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text);
-      font-size: 1.3rem;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
+      display: none; position: fixed; top: 16px; left: 16px;
+      z-index: 1100; width: 44px; height: 44px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); color: var(--text);
+      font-size: 1.3rem; cursor: pointer;
+      align-items: center; justify-content: center;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
 
-    /* ---- ELEVATION CHART ---- */
     .elevation-panel {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 380px;
-      right: 0;
-      height: 180px;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      z-index: 900;
-      padding: 12px 20px;
+      display: none; position: fixed; bottom: 0;
+      left: 380px; right: 0; height: 180px;
+      background: var(--surface); border-top: 1px solid var(--border);
+      z-index: 900; padding: 12px 20px;
     }
 
     .elevation-panel.visible { display: block; }
-
-    .elevation-panel canvas {
-      width: 100%;
-      height: 100%;
-    }
+    .elevation-panel canvas { width: 100%; height: 100%; }
 
     .elevation-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 8px;
+      display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 8px;
     }
 
     .elevation-header span {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      font-size: 0.75rem; color: var(--text-muted);
+      font-weight: 300; text-transform: uppercase; letter-spacing: 0.06em;
     }
 
-    .elevation-close {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 1rem;
-    }
+    .elevation-close { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; }
 
-    /* ---- LOADING ---- */
     .loading-overlay {
-      position: fixed;
-      inset: 0;
-      background: var(--bg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      transition: opacity 0.5s;
+      position: fixed; inset: 0; background: var(--bg);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      z-index: 9999; transition: opacity 0.5s;
     }
 
-    .loading-overlay.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
+    .loading-overlay.hidden { opacity: 0; pointer-events: none; }
 
     .loading-spinner {
-      width: 40px;
-      height: 40px;
-      border: 3px solid var(--border);
-      border-top-color: var(--accent);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
+      width: 40px; height: 40px;
+      border: 3px solid var(--border); border-top-color: var(--accent);
+      border-radius: 50%; animation: spin 0.8s linear infinite;
       margin-bottom: 16px;
     }
 
     @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { font-size: 0.85rem; color: var(--text-muted); font-weight: 300; }
 
-    .loading-text {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      font-weight: 300;
-    }
-
-    /* ---- RESPONSIVE ---- */
     @media (max-width: 768px) {
       .sidebar {
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
+        position: fixed; left: 0; top: 0; bottom: 0;
         transform: translateX(-100%);
         box-shadow: 8px 0 30px rgba(0,0,0,0.5);
       }
-
       .sidebar.open { transform: translateX(0); }
-
       .sidebar-toggle { display: flex; }
-
       .elevation-panel { left: 0; }
     }
 
-    @media (max-width: 480px) {
-      .sidebar {
-        width: 100%;
-        min-width: 100%;
-      }
+    @media (max-width: 480px) { .sidebar { width: 100%; min-width: 100%; } }
+
+    /* Hide any marker images the GPX plugin injects */
+    .leaflet-marker-icon.leaflet-zoom-animated,
+    .leaflet-marker-shadow.leaflet-zoom-animated {
+      display: none !important;
     }
   </style>
 </head>
 <body>
 
-  <!-- Loading overlay -->
   <div class="loading-overlay" id="loader">
     <div class="loading-spinner"></div>
     <div class="loading-text">Caricamento tracce…</div>
   </div>
 
-  <!-- Mobile sidebar toggle -->
   <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">☰</button>
 
   <div class="app">
-
-    <!-- SIDEBAR -->
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <h1>Escursioni <span class="trail-count" id="trailCount">0</span></h1>
@@ -393,13 +253,11 @@
       </div>
     </aside>
 
-    <!-- MAP -->
     <div class="map-container">
       <div id="map"></div>
     </div>
   </div>
 
-  <!-- Elevation panel -->
   <div class="elevation-panel" id="elevationPanel">
     <div class="elevation-header">
       <span>Profilo altimetrico</span>
@@ -409,44 +267,20 @@
   </div>
 
   <script>
-  // =================================================================
-  //  CONFIGURATION — Add your GPX files here!
-  // =================================================================
-  //
-  //  To add a new hike, simply:
-  //  1. Drop your .gpx file into the "gpx/" folder
-  //  2. Add an entry below with:
-  //       - file:  path to your GPX file
-  //       - name:  display name (optional — will use GPX metadata if blank)
-  //       - color: trail color on the map (optional — auto-assigned if blank)
-  //
-  //  Example:
-  //    { file: "gpx/my-new-hike.gpx", name: "Monte Grappa", color: "#22cc88" }
-  //
   var TRAILS = [
     { file: "gpx/example-trail.gpx", name: "", color: "" },
     { file: "gpx/Alta_Via_Dolomiti_Bellunesi_1.gpx", name: "Alta Via Dolomiti Bellunesi - Parte 1", color: "#eee600" },
   ];
 
-  // Color palette for auto-assigning trail colors
   var PALETTE = [
     "#ff5533", "#33bbff", "#44dd66", "#ffaa22", "#dd44ff",
     "#ff6699", "#22ddcc", "#ff3366", "#88aaff", "#ccdd33",
     "#ff8844", "#6677ff", "#33ff99", "#ff4488", "#aaddff",
   ];
 
-  // =================================================================
-  //  APP
-  // =================================================================
   (function() {
-    // ---- Map Setup ----
-    var map = L.map('map', {
-      center: [46.1, 11.8],
-      zoom: 10,
-      zoomControl: false,
-    });
+    var map = L.map('map', { center: [46.1, 11.8], zoom: 10, zoomControl: false });
 
-    // Stadia Alidade Satellite tiles
     L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.jpg', {
       maxZoom: 20,
       attribution:
@@ -458,7 +292,6 @@
 
     L.control.zoom({ position: 'topright' }).addTo(map);
 
-    // ---- State ----
     var layers = [];
     var activeIndex = -1;
 
@@ -472,18 +305,24 @@
     var elevCanvas = document.getElementById('elevationCanvas');
     var elevClose = document.getElementById('elevationClose');
 
-    sidebarToggle.addEventListener('click', function() {
-      sidebar.classList.toggle('open');
-    });
+    sidebarToggle.addEventListener('click', function() { sidebar.classList.toggle('open'); });
 
-    // ---- Load GPX files ----
     var loaded = 0;
 
     if (TRAILS.length === 0) {
       loader.classList.add('hidden');
       trailCountEl.textContent = '0';
-      trailListEl.innerHTML = '<div style="padding:40px 20px;text-align:center;color:var(--text-muted);font-size:0.85rem;">Nessuna traccia caricata.<br>Aggiungi file GPX nella configurazione.</div>';
+      trailListEl.innerHTML = '<div style="padding:40px 20px;text-align:center;color:var(--text-muted);font-size:0.85rem;">Nessuna traccia caricata.</div>';
       return;
+    }
+
+    // Helper: strip all markers from a GPX layer group
+    function removeMarkers(gpxLayerGroup) {
+      var toRemove = [];
+      gpxLayerGroup.eachLayer(function(layer) {
+        if (layer instanceof L.Marker) toRemove.push(layer);
+      });
+      toRemove.forEach(function(m) { gpxLayerGroup.removeLayer(m); });
     }
 
     TRAILS.forEach(function(t, i) {
@@ -502,10 +341,11 @@
       gpxLayer.on('loaded', function(e) {
         var gpx = e.target;
 
-        // Remove all markers (start/end pins)
-        gpx.eachLayer(function(layer) {
-          if (layer instanceof L.Marker) gpx.removeLayer(layer);
-        });
+        // Remove markers immediately
+        removeMarkers(gpx);
+        // And again after a short delay (some plugin versions re-add them)
+        setTimeout(function() { removeMarkers(gpx); }, 100);
+        setTimeout(function() { removeMarkers(gpx); }, 500);
 
         var trailName = t.name || gpx.get_name() || ('Traccia ' + (i + 1));
         var dist = gpx.get_distance();
@@ -549,7 +389,6 @@
       gpxLayer.addTo(map);
     });
 
-    // ---- Finish loading ----
     function finishLoading() {
       var validLayers = layers.filter(Boolean);
       trailCountEl.textContent = validLayers.length;
@@ -565,35 +404,28 @@
 
       attachClickHandlers();
 
-      // Click on empty map → deselect
-      map.on('click', function() {
-        deselectAll();
-      });
+      map.on('click', function() { deselectAll(); });
 
       loader.classList.add('hidden');
     }
 
-    // ---- Click handlers on trail polylines ----
     function attachClickHandlers() {
       layers.forEach(function(trail, idx) {
         if (!trail) return;
         trail.layer.eachLayer(function(sub) {
           if (sub.on && sub.setStyle) {
             sub.on('click', function(e) {
-              // Prevent the map click from firing (which would deselect)
               L.DomEvent.stopPropagation(e);
 
               activeIndex = idx;
               selectTrail(trail);
               renderList(layers.filter(Boolean));
 
-              // Scroll sidebar to active item
               setTimeout(function() {
                 var activeEl = document.querySelector('.trail-item.active');
                 if (activeEl) activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
               }, 50);
 
-              // Show popup at click location
               var distKm = (trail.distance / 1000).toFixed(1);
               L.popup()
                 .setLatLng(e.latlng)
@@ -612,7 +444,6 @@
       });
     }
 
-    // ---- Render sidebar list ----
     function renderList(items) {
       trailListEl.innerHTML = '';
 
@@ -652,7 +483,6 @@
       });
     }
 
-    // ---- Select a trail (no dimming) ----
     function selectTrail(trail) {
       if (trail.bounds && trail.bounds.isValid()) {
         map.fitBounds(trail.bounds, { padding: [60, 60] });
@@ -663,7 +493,6 @@
       }
     }
 
-    // ---- Deselect everything ----
     function deselectAll() {
       activeIndex = -1;
       map.closePopup();
@@ -671,7 +500,6 @@
       renderList(layers.filter(Boolean));
     }
 
-    // ---- Search ----
     searchInput.addEventListener('input', function() {
       var q = searchInput.value.toLowerCase().trim();
       var filtered = layers.filter(function(l) {
@@ -680,7 +508,6 @@
       renderList(filtered);
     });
 
-    // ---- Elevation profile ----
     function showElevation(trail) {
       elevPanel.classList.add('visible');
 
@@ -760,9 +587,7 @@
       ctx.stroke();
     }
 
-    elevClose.addEventListener('click', function() {
-      deselectAll();
-    });
+    elevClose.addEventListener('click', function() { deselectAll(); });
 
   })();
   </script>
