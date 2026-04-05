@@ -583,14 +583,15 @@
         return;
       }
 
-      items.forEach((trail, idx) => {
+      items.forEach((trail) => {
         if (!trail) return;
+        const realIdx = layers.indexOf(trail);
         const distKm = (trail.distance / 1000).toFixed(1);
         const elevUp = Math.round(trail.elevGain);
         const elevDown = Math.round(trail.elevLoss);
 
         const el = document.createElement('div');
-        el.className = 'trail-item' + (idx === activeIndex ? ' active' : '');
+        el.className = 'trail-item' + (realIdx === activeIndex ? ' active' : '');
         el.innerHTML = `
           <div class="trail-color-dot" style="background:${trail.color}"></div>
           <div class="trail-info">
@@ -604,8 +605,8 @@
         `;
 
         el.addEventListener('click', () => {
-          activeIndex = idx;
-          selectTrail(trail, idx);
+          activeIndex = realIdx;
+          selectTrail(trail, realIdx);
           renderList(items);
           sidebar.classList.remove('open');
         });
