@@ -730,18 +730,9 @@
     }
 
     elevClose.addEventListener('click', () => {
-      elevPanel.classList.remove('visible');
-      // Restore all trails opacity
-      layers.forEach(l => {
-        if (!l) return;
-        l.layer.eachLayer(sub => {
-          if (sub.setStyle) sub.setStyle({ opacity: 0.85, weight: 4 });
-        });
-      });
-      activeIndex = -1;
-      renderList(layers.filter(Boolean));
+      deselectAll();
     });
-
+    
     // Click on trail line on map → select it
     function attachClickHandlers() {
       layers.forEach((trail, idx) => {
