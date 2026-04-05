@@ -440,17 +440,9 @@
                 if (activeEl) activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
               }, 50);
 
-              var distKm = (trail.distance / 1000).toFixed(1);
               L.popup()
                 .setLatLng(e.latlng)
-                .setContent(
-                  '<div class="popup-title">' + trail.name + '</div>' +
-                  '<dl class="popup-stats">' +
-                  '<dt>Distanza</dt><dd>' + distKm + ' km</dd>' +
-                  '<dt>Dislivello ↑</dt><dd>' + Math.round(trail.elevGain) + ' m</dd>' +
-                  '<dt>Dislivello ↓</dt><dd>' + Math.round(trail.elevLoss) + ' m</dd>' +
-                  '</dl>'
-                )
+                .setContent('<div class="popup-title">' + trail.name + '</div>')
                 .openOn(map);
             });
           }
