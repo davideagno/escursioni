@@ -568,6 +568,9 @@
       }
 
       attachClickHandlers();
+      map.on('click', function() {
+        deselectAll();
+      });
       loader.classList.add('hidden');
     }
 
@@ -617,24 +620,18 @@
         map.fitBounds(trail.bounds, { padding: [60, 60] });
       }
 
-      // Highlight selected trail (bring to front, dim others)
-      layers.forEach((l, j) => {
-        if (!l) return;
-        l.layer.eachLayer(sub => {
-          if (sub.setStyle) {
-            sub.setStyle({
-              opacity: j === idx ? 1 : 0.3,
-              weight: j === idx ? 5 : 3,
-            });
-          }
-        });
-        if (j === idx) l.layer.bringToFront();
-      });
+      trail.layer.bringToFront();
 
-      // Show elevation chart
       if (trail.elevData && trail.elevData.length > 1) {
         showElevation(trail);
       }
+    }
+
+    function deselectAll() {
+      activeIndex = -1;
+      map.closePopup();
+      elevPanel.classList.remove('visible');
+      renderList(layers.filter(Boolean));
     }
 
     // ---- Search ----
