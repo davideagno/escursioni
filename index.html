@@ -538,7 +538,22 @@
       if (trail.bounds && trail.bounds.isValid()) {
         map.fitBounds(trail.bounds, { padding: [60, 60] });
       }
+
+      // Dim all other trails
+      layers.forEach(function(l) {
+        if (!l) return;
+        l.layer.eachLayer(function(sub) {
+          if (sub.setStyle) {
+            if (l === trail) {
+              sub.setStyle({ opacity: 1, weight: 5 });
+            } else {
+              sub.setStyle({ opacity: 0.2, weight: 2 });
+            }
+          }
+        });
+      });
       trail.layer.bringToFront();
+
       if (trail.elevData && trail.elevData.length > 1) {
         showElevation(trail);
       }
@@ -548,9 +563,19 @@
       activeIndex = -1;
       map.closePopup();
       elevPanel.classList.remove('visible');
+
+      // Restore all trails to normal
+      layers.forEach(function(l) {
+        if (!l) return;
+        l.layer.eachLayer(function(sub) {
+          if (sub.setStyle) {
+            sub.setStyle({ opacity: 0.85, weight: 4 });
+          }
+        });
+      });
+
       renderList(layers.filter(Boolean));
     }
-
     searchInput.addEventListener('input', function() {
       var q = searchInput.value.toLowerCase().trim();
       var filtered = layers.filter(function(l) {
