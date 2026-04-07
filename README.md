@@ -1,1 +1,1 @@
-Mappa con escursioni
+mappa
